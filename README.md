@@ -1,5 +1,7 @@
 # 简介
 
+> **注意: 这个库目前并不稳定，请谨慎使用 !**
+
 这是基于 `https://github.com/jackc/pgx` 封装的 Golang `database/sql/driver` 的 `Postgres` 的实现。
 
 目的在于解决以下问题:
