@@ -2,9 +2,14 @@ package pgdriver
 
 import (
 	"context"
+	"database/sql"
 	"database/sql/driver"
 	"time"
 )
+
+func init() {
+	sql.Register("postgres", NewDriver())
+}
 
 var _ driver.Driver = (*Driver)(nil)
 var _ driver.DriverContext = (*Driver)(nil)

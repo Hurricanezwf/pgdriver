@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/jackc/pgconn"
+	"github.com/jackc/pgtype"
 	pgx "github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/pgxpool"
 )
@@ -16,7 +17,21 @@ type ctxKey int
 const ctxKeyFakeTx ctxKey = 0
 
 // Only intrinsic types should be binary format with database/sql.
-var databaseSQLResultFormats pgx.QueryResultFormatsByOID
+var databaseSQLResultFormats = pgx.QueryResultFormatsByOID{
+	pgtype.BoolOID:        1,
+	pgtype.ByteaOID:       1,
+	pgtype.CIDOID:         1,
+	pgtype.DateOID:        1,
+	pgtype.Float4OID:      1,
+	pgtype.Float8OID:      1,
+	pgtype.Int2OID:        1,
+	pgtype.Int4OID:        1,
+	pgtype.Int8OID:        1,
+	pgtype.OIDOID:         1,
+	pgtype.TimestampOID:   1,
+	pgtype.TimestamptzOID: 1,
+	pgtype.XIDOID:         1,
+}
 
 var _ driver.Connector = (*Connector)(nil)
 
