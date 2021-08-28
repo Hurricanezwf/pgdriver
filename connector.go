@@ -222,5 +222,5 @@ func (c *Conn) ResetSession(ctx context.Context) error {
 }
 
 func (c *Conn) rawConn() *pgx.Conn {
-	return c.rawConn()
+	return c.poolConn.Conn()
 }
